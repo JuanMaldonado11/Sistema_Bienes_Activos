@@ -1,0 +1,54 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title mt-0"> Establecimientos </h4>
+                        <p class="card-category"> Lista de Establecimientos </p>
+                        <a href="{% url 'activos:establecimiento_create' %}" class="btn btn-primary">Crear Establecimientos</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>Id</td>
+                                        <td>Nombre</td>
+                                        <td>Direccion</td>
+                                        <td>Telefono</td>
+                                        <td>Acciones</td>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                    {% if object_list %}
+                                    {% for establecimiento in object_list %}
+                                    <tr>
+                                        <td>{{ establecimiento.id }}</td>
+                                        <td>{{ establecimiento.nombre }}</td>
+                                        <td>{{ establecimiento.direccion }}</td>
+                                        <td>{{ establecimiento.telefono}}</td>
+                                        <td>
+                                            <a class="mdi mdi-lead-pencil" href="{% url 'activos:establecimiento_edit' establecimiento.id %}"></a> | 
+                                            <a class="mdi mdi-delete"      href="{% url 'activos:establecimiento_delete' establecimiento.id %}"></a> | 
+                                            <!-- <a class="mdi mdi-eye"         href=""></a> -->
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    {% else %}
+                                    <h1>No hay registro de Establecimientos</h1>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

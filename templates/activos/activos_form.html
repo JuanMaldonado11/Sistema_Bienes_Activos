@@ -1,0 +1,154 @@
+{% extends "app/base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Editar los Activos</h4>
+              <p class="card-category">Completa la Tabla</p>
+            </div>
+            <div class="card-body">
+              {% bootstrap_form_errors form layout='inline' %}
+                <form method="post">
+                  {% csrf_token %} 
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.codigo.name">{{ form.codigo.label }}</label>
+                        {{ form.codigo }} 
+                        
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.serie.name">{{ form.n_serie.label }}</label>
+                        {{ form.n_serie }} 
+                        
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.nombre.name">{{ form.nombre.label }}</label>
+                        {{ form.nombre }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.categoria.name">{{ form.categoria.label }} 
+                                                    
+                          <a class="related-widget-wrapper-link add-related" id="add_id_categoria" href="{% url 'activos:tipobien_create' %}" title="Añadir otra categoria"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'activos:tipobien_list' %}" title="Ver las Categorias"></a>
+                        </label>
+                        {{ form.categoria }} 
+
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.marca.name">{{ form.marca.label }}
+                          <a class="related-widget-wrapper-link add-related" id="add_id_marca" href="{% url 'activos:marca_create' %}" title="Añadir otra Marca"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'activos:marca_list' %}" title="Ver las Marcas"></a>
+                        </label>
+                        {{ form.marca }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.modelo.name">{{ form.modelo.label }}
+                          <a class="related-widget-wrapper-link add-related" id="add_id_modelo" href="{% url 'activos:modelo_create' %}" title="Añadir otro Modelo"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'activos:modelo_list' %}" title="Ver los Modelos"></a>
+                        </label>
+                        {{ form.modelo }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.color.name">{{ form.color.label }}</label>
+                        {{ form.color }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.estado.name">{{ form.estado.label }}
+                          <a class="related-widget-wrapper-link add-related" id="add_id_estado" href="{% url 'activos:estado_create' %}" title="Añadir otro Estado"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'activos:estado_list' %}" title="Ver los Estados"></a>
+                        </label>
+                        {{ form.estado }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.ciudad.name">{{ form.ciudad.label }}
+                          <a class="related-widget-wrapper-link add-related" id="add_id_ciudad" href="{% url 'activos:ciudad_create' %}" title="Añadir otra Ciudad"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'activos:ciudad_list' %}" title="Ver las Ciudades"></a>
+                        </label>
+                        {{ form.ciudad }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.establecimiento.name">{{ form.establecimiento.label }}
+                          <a class="related-widget-wrapper-link add-related" id="add_id_establecimiento" href="{% url 'activos:establecimiento_create' %}" title="Añadir otro Establecimiento"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'activos:establecimiento_list' %}" title="Ver los Establecimientos"></a>
+                        </label>
+                        {{ form.establecimiento }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.ubicacion.name">{{ form.ubicacion.label }}
+                          <a class="related-widget-wrapper-link add-related" id="add_id_ubicacion" href="{% url 'activos:ubicacion_create' %}" title="Añadir otra Ubicacion"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'activos:ubicacion_list' %}" title="Ver la Ubicacion (Aulas)"></a>
+                        </label>
+                        {{ form.ubicacion }}
+                      </div>
+                    </div>
+                    <!--<div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.delegado.name">{{ form.delegado.label }}
+                          <a class="related-widget-wrapper-link add-related" id="add_id_delegado" href="{% url 'usuarios:usuario_create' %}" title="Añadir otro Delegado"><img src="/static/admin/img/icon-addlink.svg" alt="Añadir"></a>
+                          <a class="mdi mdi-eye" href="{% url 'usuarios:usuario_list' %}" title="Ver los delegados disponibles"></a>
+                        </label>
+                        {{ form.delegado }}
+                      </div>
+                    </div> -->
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.observaciones.name">{{ form.observaciones.label }}</label>
+                        {{ form.observaciones }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.mantenimiento.name">{{ form.mantenimiento.label }}</label>
+                        {{ form.mantenimiento }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.fecha.name">{{ form.fecha.label }}</label>
+                        {{ form.fecha }}
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                      <div class="form-group">
+                        <label for="form.valor.name">{{ form.valor.label }}</label>
+                        {{ form.valor }} 
+                        
+                      </div>
+                    </div>
+                  </div>
+                    <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+{% endblock script %}

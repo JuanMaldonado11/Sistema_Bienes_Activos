@@ -1,0 +1,50 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title mt-0"> CIUDADES</h4>
+                        <p class="card-category"> Lista de Ciudades </p>
+                        <a href="{% url 'activos:ciudad_create' %}" class="btn btn-primary">Crear Ciudad</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>Id</td>
+                                        <td>Nombre</td>
+                                        <td>Acciones</td>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                    {% if object_list %}
+                                    {% for ciudad in object_list %}
+                                    <tr>
+                                        <td>{{ ciudad.id }}</td>
+                                        <td>{{ ciudad.nombre }}</td>
+                                        <td>
+                                            <a class="mdi mdi-lead-pencil" href="{% url 'activos:ciudad_edit' ciudad.id %}"></a> | 
+                                            <a class="mdi mdi-delete" href="{% url 'activos:ciudad_delete' ciudad.id %}"></a> | 
+                                            <!-- <a class="mdi mdi-eye" href=""></a> -->
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    {% else %}
+                                    <h1>No hay registro de ciudades</h1>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,69 @@
+
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+{% load qr_code %}
+<!DOCTYPE html>
+<htm lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Bienes y activos</title>
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/img.png' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    </head>
+    <body>
+      <div class="container">
+        <div class="imprimir">
+            <div class="row">
+                <div class="col-12">
+                    <h2><center>INSTITUTO SUPERIOR TECNOLOGICO "LOJA"</center> </h2>
+                </div>
+                <div class="col-6 text-center">
+                    <img src="{% static 'images/cropped-icono.png' %}" id="icon" alt="User Icon" width="100" height="100" ></img>
+                </div>
+                <div class="col-6 text-center">
+                    <img src="{% static 'images/logosecretaria.png' %}" id="icon" alt="User Icon" width="300" height="100" />
+                </div>
+            </div>
+            {% for activo in activos %}
+            <div class="row text-center ">
+                <!--Segundo codigo  qr-->
+                    <div class="col-12 text-center">
+                        <div class="col-12">
+                            <h2>Código QR del Nombre y Número de Serie</h2>
+                        </div>
+                        <div class="row text-right">
+                            <div class="col-6">
+                                <img src="{% url 'activos:generar_qr' activo.pk  '0' %}" style="max-width: 200px;" alt="Codigo QR del adhesivo">
+                            </div>
+                            <div class="col-6 text-left" style="margin-top: 50px;">
+                                <p style="font-weight: bold; font-size: 15px;">{{activo.nombre}}</p>
+                                <p style="font-weight: bold; font-size: 15px;">{{activo.n_serie}}</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+            <button id="print" type="button" class="mdi mdi-arrow-left" >Imprimir</button>
+            <a href="{% url 'activos:asignacion_groups' %}" class="mdi mdi-arrow-left">Volver</a>
+        </div>  
+        <script>src="{% static 'js/jquery.min.js' %}"</script>
+        <script src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'js/printThis.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script>
+            $('#print').click(function(){
+                $('.imprimir').printThis();
+            })
+        </script>
+       
+    </body>
+</htm>
+                        
+
+{% endblock content %}

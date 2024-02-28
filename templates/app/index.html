@@ -1,0 +1,91 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Sales chart -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <!-- Column -->
+        <div class="col-lg-8 col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div>
+                                    <h3 class="card-title">Resumen de bienes o activos segun su estado</h3>
+                                    <h6 class="card-subtitle">Buen estado Vs Mal estado</h6>
+                                </div>
+                                <div class="ml-lg-auto mx-sm-auto mx-lg-0">
+                                    <ul class="list-inline d-flex">
+                                        <li class="mr-4">
+                                            <h6 class="text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Malo
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h6 class="text-info"><i class="fa fa-circle font-10 m-r-10"></i>Bueno</h6>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="amp-pxl" style="height: 360px;">
+                                <div class="chartist-tooltip"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Nuestros visitantes </h3>
+                    <h6 class="card-subtitle">Usuarios que mas ingresan a la pagina</h6>
+                    <div id="visitor" style="height: 290px; width: 100%; max-height: 290px; position: relative;"
+                        class="c3">
+                        <div class="c3-tooltip-container"
+                            style="position: absolute; pointer-events: none; display: none;">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr class="m-t-0 m-b-0">
+                </div>
+                <div class="card-body text-center ">
+                    <ul class="list-inline d-flex justify-content-center align-items-center mb-0">
+                        <li class="mr-4">
+                            <h6 class="text-info"><i class="fa fa-circle font-10 mr-2 "></i>{{ usuarios.0.0 }}</h6>
+                        </li>
+                        <li class="mr-4">
+                            <h6 class=" text-primary"><i class="fa fa-circle font-10 mr-2">{{ usuarios.1.0 }}</i></h6>
+                        </li>
+                        <li class="mr-4">
+                            <h6 class=" text-success"><i class="fa fa-circle font-10 mr-2"></i>{{ usuarios.2.0 }}</h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Sales chart -->
+    <!-- ============================================================== -->
+
+
+</div>
+{% endblock content %}
+{% block scripts %}
+{{ block.super }}
+<script>
+    var usuarios_dict = '{{ usuarios_dict|safe }}'
+    var array_buen_estado = '{{ array_buen_estado|safe }}'
+    var array_mal_estado = '{{ array_mal_estado|safe }}'
+</script>
+<script src="{% static 'js/dashboard_char.js' %}"></script>
+<script src="{% static 'js/pages/dashboards/dashboard1.js' %}"></script>
+
+{% endblock scripts %}

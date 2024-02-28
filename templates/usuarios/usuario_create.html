@@ -1,0 +1,29 @@
+{% extends "app/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <h3>Crear Usuario</h3>
+                    {% bootstrap_form_errors form layout='inline' %}
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        {% bootstrap_form form2 layout='inline' %}
+                        {% bootstrap_form form layout='inline' %}
+                        
+                        
+                        <!-- class="btn btn-primary" -->
+                        
+                        {% buttons %}
+                            <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

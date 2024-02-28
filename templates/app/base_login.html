@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/img.png' %}">
+  
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+{% block content_login %}
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    {% csrf_token %}
+    <!-- Tabs Titles -->
+    <h2 class="active"> LOGIN </h2>
+    <h2 class="inactive underlineHover">Sign Up </h2>
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="{% static 'images/cropped-icono.png' %}" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST">
+      {% csrf_token %}
+      <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <div class="form-group">
+                  <label for="username">Nombre de usuario: </label>
+                  <input class="form-control" type="text" name="username">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <div class="form-group">
+                  <label for="username">Contraseña: </label>
+                  <input class="form-control" type="password" name="password">
+              </div>
+          </div>
+      </div>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+          <div class="form-group">
+              <a href="{% url 'password_reset_form' %}">Olvide la contraseña</a>
+              <input class="btn btn-primary" type="submit" value="Iniciar session">
+          </div>
+      </div>
+  </div>
+
+  </div>
+</div>
+{% endblock content_login %}
+  
+
+<!-- partial -->
+
+  
+</body>
+</html>

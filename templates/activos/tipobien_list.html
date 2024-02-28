@@ -1,0 +1,50 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title mt-0"> CATEGORIAS DE BIENES</h4>
+                        <p class="card-category"> Lista de Categorias de los bienes</p>
+                        <a href="{% url 'activos:tipobien_create' %}" class="btn btn-primary">Crear Categorias de bien</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>Id</td>
+                                        <td>Nombre</td>
+                                        <td>Acciones</td>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                    {% if object_list %}
+                                    {% for categoria in object_list %}
+                                    <tr>
+                                        <td>{{ categoria.id }}</td>
+                                        <td>{{ categoria.nombre }}</td>
+                                        <td>
+                                            <a class="mdi mdi-lead-pencil" href="{% url 'activos:tipobien_update' categoria.pk %}"></a> | 
+                                            <a class="mdi mdi-delete" href="{% url 'activos:tipobien_delete' categoria.pk %}"></a> | 
+                                            <!-- <a class="mdi mdi-eye" href=""></a> -->
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    {% else %}
+                                    <h1>No hay registro de tipos de bienes</h1>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+{% load bootstrap4 %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Bienes y activos</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/img.png' %}">
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    </head>
+    <body>
+        <div class="container">
+            
+            <h2><center>INSTITUTO SUPERIOR TECNOLOGICO "LOJA"</center> </h2>
+            <div class="fadeIn first">
+                <img src="{% static 'images/cropped-icono.png' %}" id="icon" alt="User Icon" width="100" height="100" ></img>
+                <img src="{% static 'images/white.jpg' %}" alt="User Icon" width="400" height="100"/>
+                <img src="{% static 'images/logosecretaria.png' %}" id="icon" alt="User Icon" width="400" height="100" />
+                
+            </div>
+            
+            <center><h3>ACTA ISTL-BIENES-2024- <input type="number" style="width : 130px; heigth : 20px"></h3></center>
+            <div class="row">
+                <div class="col-6">
+                    <p > <b> NOMBRE DEL DOCENTE USUARIO FINAL:</b>  {{ delegados.get_full_name }}</p>
+                    
+                        
+                  
+                                  
+        
+                    <p> <b> NUMERO DE CEDULA: </b>  {{ cedula.ci_ruc }}</p>
+        
+        
+                    
+                    
+                    <p> <b> UBICACION FISICA DEL DOCENTE:</b> <input type="text"></p> 
+
+                </div>
+                <div class="col-6">
+                    <img src="{% url 'activos:generar_qr' delegados.pk  '1' %}" style="max-width: 200px;" alt="Codigo QR del adhesivo">
+                </div>
+            </div>
+            
+            
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" border= "-1px">
+                        <thead >
+                            <th>CANTIDAD</th>
+                            <th>DESCRIPCION</th>
+                            <th>CODIGO SENESCYT</th>
+                            <th>NUMERO DE SERIE</th>
+                            <th>ESTADO</th>
+                        </thead>
+                        <tbody>
+                            {% for activo in activos %}
+                            <tr >
+                                <td> 1 </td>
+                                <td> {{ activo.nombre }} </td>
+                                <td> {{ activo.codigo }} </td>
+                                <td> {{ activo.n_serie }} </td>
+                                <td> {{ activo.estado }} </td>
+                            </tr>
+                            {% endfor %}
+            
+       
+                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" border= "-1px">
+                        <thead >
+                            <th>OBSERVACIONES</th>
+                        </thead>
+                        <tbody>
+                            
+                            
+                            <tr >
+                                <td> <textarea  class="form-control" name="textarea" rows="10"></textarea> </td>
+                            </tr>
+                            
+                                
+                            
+                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            
+                
+            
+                
+            Para constancia firman por duplicado en Loja, a <input type="date">
+            <p>
+                Las presentes actas dejan insubsistentes actas anteriores.
+            <div>
+    
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover" border= "-1px">
+                            <thead >
+                                <th>ENTREGUE CONFORME</th>
+                                <th>RECIBI CONFORME</th>
+                            </thead>
+                            <tbody>
+                                
+                                <tr >
+                                    <td>  
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <center>Ing.Christian Nicolas Cevallos Gutierrez</center>  <br>
+                                        <center>RESPONSABLE DE LA UNIDAD</center> 
+                                        <center>ADMINISTRATIVA DEL IST LOJA</center>
+    
+                                    </td>
+                                    <td> 
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <center>Ing.Christian Nicolas Cevallos Gutierrez</center>  <br>
+                                        <center>DOCENTE USUARIO FINAL DE BIENES IST</center> 
+                                        <center>LOJA</center>
+                                    </td>
+                                </tr>
+                        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+             <br><br>
+                
+                <br><br>
+            </div>
+        </div>
+       
+        <div id="imprimir">
+            <button href="{% static 'js/printThis.js' %}" id="print" type="button" class="mdi mdi-arrow-left">Imprimir</button>
+            <a href="{% url 'activos:qr_adhesivo' delegados.pk %}" class="mdi mdi-arrow-left" style="margin-right: 10px;">Codigo QR Por Producto</a>
+        </div>
+        <script>src="{% static 'js/jquery.min.js' %}"</script>
+        <script src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'js/printThis.js' %}"></script>
+        <script>
+            $('#print').click(function(){
+                $('.container').printThis();
+            })
+        </script>
+    </body>
+</html>

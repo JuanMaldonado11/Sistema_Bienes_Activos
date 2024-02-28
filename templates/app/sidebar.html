@@ -1,0 +1,40 @@
+{% load static %}
+
+{% block sidebar %}
+<div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+        <ul id="sidebarnav">
+            <!-- User Profile-->
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                    href="{% url 'activos:activos_index' %}" aria-expanded="false"><i class="mdi mdi-home"></i><span
+                        class="hide-menu">INICIO</span></a></li>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                    href="{% url 'usuarios:usuario_list' %}" aria-expanded="false">
+                    <i class="mdi mr-2 mdi-account-check"></i><span class="hide-menu">USUARIOS</span></a>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="{% url 'activos:activos_list' %}" aria-expanded="false"><i
+                    class="mdi mr-2 mdi-book-open-variant"></i><span class="hide-menu">BIENES O ACTIVOS</span></a>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="{% url 'activos:asignacion_list' %}" aria-expanded="false"><i
+                    class="mdi mdi-book-open"></i><span class="hide-menu">ASIGNACION</span></a>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="{% url 'activos:asignacion_groups' %}" aria-expanded="false"><i
+                    class="mdi mdi-book-open"></i><span class="hide-menu">ASIGNACION CON ACTAS</span></a>
+            </li>
+            
+            
+        </ul>
+
+    </nav>
+    <!-- End Sidebar navigation -->
+    
+</div>
+
+
+{% endblock sidebar %}
+    
+    

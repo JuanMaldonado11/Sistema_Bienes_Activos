@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Bienes y activos</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/img.png' %}">
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/skeleton.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h2><center>INSTITUTO SUPERIOR TECNOLOGICO "LOJA"</center> </h2>
+            <div class="fadeIn first">
+                <img src="{% static 'images/cropped-icono.png' %}" id="icon" alt="User Icon" width="100" height="100" ></img>
+                <img src="{% static 'images/white.jpg' %}" alt="User Icon" width="400" height="100"/>
+                <img src="{% static 'images/logosecretaria.png' %}" id="icon" alt="User Icon" width="400" height="100" />
+                
+            </div>
+            <h3>  Lista de bienes y activos  </h3>
+            <h3>Cantidad : {{ cantidad }}</h3>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" border= "-1px">
+                        <thead >
+                            <th>Codigo</th>
+                            <th>Numero de serie</th>
+                            <th>Nombre</th>
+                            <th>Marca</th>
+                            <th>Establecimiento</th>
+                            <th>Aula</th>
+                            <th>Fecha</th>
+                            <th>Observaciones</th>
+                        </thead>
+                        <tbody>
+                            {% for activo in activos %}
+                            <tr >
+                                <td> {{ activo.codigo }} </td>
+                                <td> {{ activo.n_serie }} </td>
+                                <td> {{ activo.nombre }} </td>
+                                <td> {{ activo.marca }} </td>
+                                <td> {{ activo.establecimiento }} </td>
+                                <td> {{ activo.ubicacion }}</td>
+                                <td> {{ activo.fecha }}</td>
+                                <td> {{ activo.observaciones }}</td>
+                                
+                                
+                            </tr>
+                            
+                            {% endfor %}
+                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+
+                <br><br>
+                <center><h3>_________________________</h3></center>
+            <center><h4>Ing. Christian Nicolas Cevallos Gutierrez</h4></center>
+            <center><h4>RESPONSABLE DE LA UNIDAD ADMINISTRATIVA DEL ISTL</h4></center>
+            </div>
+        </div>
+        
+        <div>
+            <button id="print" type="button" class="mdi mdi-arrow-left" >Imprimir</button>
+            <a href="{% url 'activos:activos_list' %}" class="mdi mdi-arrow-left">Volver</a>
+        </div>
+        <script>src="{% static 'js/jquery.min.js' %}"</script>
+        <script src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'js/printThis.js' %}"></script>
+        <script>
+            $('#print').click(function(){
+                $('.container').printThis();
+            })
+        </script>
+    </body>
+</html>

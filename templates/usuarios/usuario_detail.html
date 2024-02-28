@@ -1,0 +1,82 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Usuario</h4>
+                <p class="card-category">Vista del Usuario seleccionado</p>
+            </div>
+            <div class="card-body">
+                <div id="USUARIO">
+                    <div class="card-title">
+                        <h2>{{ usuario.user.get_full_name }}</h2>
+                    </div>
+                    <form action="form-horizontal form-material">
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Id:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.id }}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Nombre de Usuario:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.user.username }}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Email:</label></h4>
+                                
+                                    <div class="col-md-12">
+                                        {{ usuario.user.email }}
+                                    </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Nombres:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.user.first_name }}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Apellidos:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.user.last_name }}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Cargo:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.cargo }}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Telefono:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.telefono }}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Direccion:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.direccion }}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <h4><label class="col-md-12 mb-0">Ciudad:</label></h4>
+                                    <div class="col-md-12">
+                                        {{ usuario.ciudad }}
+                                    </div>
+                            </div>
+                            
+                    </form>
+                    
+                        
+                        <a href="{% url 'usuarios:usuario_list' %}" class="mdi mdi-arrow-left">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Bienes Y activos</h4>
+                <p class="card-category">Vista del Bien seleccionado</p>
+            </div>
+            <div class="card-body">
+                <div id="ACTIVOS">
+                    <div class="card-title">
+                        <h2>{{ activo.nombre }}</h2>
+                    </div>
+                    <form action="form-horizontal form-material">
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Id:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.id}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Codigo:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.codigo}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Nombre:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.nombre}}
+                                </div>
+                        </div>
+                       <!-- <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Tipo:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.tipo}}
+                                </div>-->
+                                
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Modelo:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.modelo}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Marca:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.marca}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Estado:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.estado}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Establecimiento:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.establecimiento}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Ubicacion Id:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.ubicacion}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Delegado:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.delegado}}
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <h4><label class="col-md-12 mb-0">Observaciones:</label></h4>
+                                <div class="col-md-12">
+                                    {{ activo.observaciones}}
+                                </div>
+                        </div>
+                        <a href="{% url 'activos:activos_list' %}" class="mdi mdi-arrow-left">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
